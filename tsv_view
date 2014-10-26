@@ -1,0 +1,28 @@
+#!/usr/bin/env runawk
+
+#use "power_getopt.awk"
+
+#.begin-str help
+# tsv_view - viewer for TSV format
+# usage: pkg_cmp_summary -h
+#        pkg_cmp_summary [OPTIONS] [files...]
+# OPTIONS:
+#   -h|--help     display this help
+#   -n            replace \n with LF
+#.end-str
+
+BEGIN {
+	FS = "\t"
+	arg_n = getarg("n")
+	print arg_n
+}
+
+{
+	for (i=1; i <= NF; ++i){
+		if (arg_n)
+			gsub(/ \\n /, "\n", $i)
+
+		print i, $i
+	}
+	print "============================="
+}
