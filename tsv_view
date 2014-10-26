@@ -4,8 +4,8 @@
 
 #.begin-str help
 # tsv_view - viewer for TSV format
-# usage: pkg_cmp_summary -h
-#        pkg_cmp_summary [OPTIONS] [files...]
+# usage: tsv_view -h
+#        tsv_view [OPTIONS] [files...]
 # OPTIONS:
 #   -h|--help     display this help
 #   -n            replace \n with LF
