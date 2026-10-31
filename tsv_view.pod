@@ -1,0 +1,36 @@
+=head1 NAME
+
+tsv_view -- tiny utility for viewing TSV files
+
+=head1 SYNOPSIS
+
+B<tsv_view> I<[options]> I<[files...]>
+
+=head1 OPTIONS
+
+=over 6
+
+=item B<-h> or B<--help>
+
+Display this screen.
+
+=item B<-l>
+
+Replace \n with LF.
+
+=item B<-H>
+
+Consider first line as a header.
+
+=back
+
+=head1 AUTHOR
+
+Public domain, 2014-2026 Aleksey Cheusov <vle@gmx.net>
+
+=head1 HOME
+
+L<https://github.com/cheusov/tsv_view/>
+
+=head1 SEE ALSO
+L<runawk(1)>
