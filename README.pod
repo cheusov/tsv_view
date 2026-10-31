@@ -25,7 +25,7 @@ We can view it as the following.
     Type          : Interpreter
     Time          : 28.91
     
-    Implementation: gforth <
+    Implementation: gforth
     Language      : Forth
     Type          : Interpreter
     Time          : 12.43
