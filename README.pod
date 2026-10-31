@@ -1,3 +1,6 @@
+
+=head3 README
+
 tsv_view ia a tiny utility for viewing TSV files. Example is below.
 
 Original file.
