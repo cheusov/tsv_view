@@ -1,0 +1,30 @@
+tsv_view ia a tiny utility for viewing TSV files. Example is below.
+
+Original file.
+
+    $ cat bench.tsv 
+    Implementation        Language        Type        Time
+    luajit         Lua        JIT        3.42
+    lua         Lua        Interpreter        28.91
+    gforth <        Forth        Interpreter        12.43
+    $
+
+We can view it as the following.
+
+    $ tsv_view -H bench.tsv
+    Implementation: luajit 
+    Language      : Lua
+    Type          : JIT
+    Time          : 3.42
+    
+    Implementation: lua 
+    Language      : Lua
+    Type          : Interpreter
+    Time          : 28.91
+    
+    Implementation: gforth <
+    Language      : Forth
+    Type          : Interpreter
+    Time          : 12.43
+    
+    $
