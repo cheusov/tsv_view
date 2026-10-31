@@ -24,9 +24,40 @@ Consider first line as a header.
 
 =back
 
+=head1 EXAMPLE
+
+Original file.
+
+    $ cat bench.tsv 
+    Implementation        Language        Type        Time
+    luajit         Lua        JIT        3.42
+    lua         Lua        Interpreter        28.91
+    gforth <        Forth        Interpreter        12.43
+    $
+
+We can view it as the following.
+
+    $ tsv_view -H bench.tsv
+    Implementation: luajit 
+    Language      : Lua
+    Type          : JIT
+    Time          : 3.42
+    
+    Implementation: lua 
+    Language      : Lua
+    Type          : Interpreter
+    Time          : 28.91
+    
+    Implementation: gforth <
+    Language      : Forth
+    Type          : Interpreter
+    Time          : 12.43
+    
+    $
+
 =head1 AUTHOR
 
-Public domain, 2014-2026 Aleksey Cheusov <vle@gmx.net>
+Public domain, 2014-2026, Aleksey Cheusov <vle@gmx.net>
 
 =head1 HOME
 
