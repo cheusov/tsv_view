@@ -1,21 +1,27 @@
 #!/usr/bin/env runawk
 
+#
+# Created by Aleksey Cheusov<vle@gmx.net>
+#
+# Public domain
+#
+
 #use "power_getopt.awk"
 #use "max.awk"
 
 #.begin-str help
-# tsv_view - viewer for TSV format
+# tsv_view - viewer for TSV files
 # usage: tsv_view -h
 #        tsv_view [OPTIONS] [files...]
 # OPTIONS:
 #   -h|--help     display this help
-#   -n            replace \n with LF
+#   -l            replace \n with LF
 #   -H            consider first line as header
 #.end-str
 
 BEGIN {
 	FS = "\t"
-	arg_n = getarg("n")
+	arg_n = getarg("l")
 	arg_H = getarg("H")
 }
 
@@ -26,8 +32,6 @@ arg_H && NR == 1 {
 		max_col_len = max(max_col_len, length($i))
 	}
 	col_fmt = sprintf("%%-%ds", max_col_len)
-#	print col_fmt
-#	exit(0)
 	next
 }
 
