@@ -16,7 +16,12 @@
 # OPTIONS:
 #   -h|--help     display this help
 #   -l            replace \n with LF
-#   -H            consider first line as header
+#   -H            consider first line as header, if applied multiple times,
+#                 headers are read from each input file
+#
+# Example:
+#    tsv_view -HH bench1.tsv bench2.tsv
+#
 #.end-str
 
 BEGIN {
@@ -25,7 +30,7 @@ BEGIN {
 	arg_H = getarg("H")
 }
 
-arg_H && NR == 1 {
+arg_H && NR == 1 || arg_H > 1 && FNR == 1 {
 	max_col_len = 1
 	for (i = 1; i <= NF; ++i) {
 		col[i] = $i
