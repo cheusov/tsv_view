@@ -19,6 +19,8 @@
 #   -H                consider first line as header, if applied multiple times,
 #                     headers are read from each input file
 #   =d <delimiter>    sets regexp for delimiter, the default is \t
+#   =o <columns>      comma-separated list of columns to output
+#   =O <columns>      comma-separated list of columns to ignore
 #
 # Example:
 #    tsv_view -HH bench1.tsv bench2.tsv
@@ -31,6 +33,14 @@ BEGIN {
 	arg_n = getarg("l")
 	arg_H = getarg("H")
 	col_fmt = "%-2s : %s\n"
+	arg_o = getarg("o")
+	arg_O = getarg("O")
+	if (arg_o || arg_O) {
+		split(arg_o arg_O, cols_idx, /,/)
+		for (i in cols_idx) {
+			cols[cols_idx[i]] = 1
+		}
+	}
 }
 
 arg_H && NR == 1 || arg_H > 1 && FNR == 1 {
@@ -52,6 +62,9 @@ arg_H && NR == 1 || arg_H > 1 && FNR == 1 {
 			col_name = col[i]
 		else
 			col_name = i
+
+		if (arg_o && !(col_name in cols)) continue
+		if (arg_O && (col_name in cols)) continue
 
 		printf col_fmt, col_name, $i
 	}
