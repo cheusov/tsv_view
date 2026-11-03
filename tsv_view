@@ -36,7 +36,7 @@ arg_H && NR == 1 || arg_H > 1 && FNR == 1 {
 		col[i] = $i
 		max_col_len = max(max_col_len, length($i))
 	}
-	col_fmt = sprintf("%%-%ds", max_col_len)
+	col_fmt = sprintf("%%-%ds: %%s\n", max_col_len + 1)
 	next
 }
 
@@ -46,7 +46,7 @@ arg_H && NR == 1 || arg_H > 1 && FNR == 1 {
 			gsub(/ \\n /, "\n", $i)
 
 		if (arg_H)
-			printf (col_fmt ": %s\n"), col[i], $i
+			printf col_fmt, col[i], $i
 		else
 			print i, $i
 	}
