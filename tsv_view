@@ -14,10 +14,11 @@
 # usage: tsv_view -h
 #        tsv_view [OPTIONS] [files...]
 # OPTIONS:
-#   -h|--help     display this help
-#   -l            replace \n with LF
-#   -H            consider first line as header, if applied multiple times,
-#                 headers are read from each input file
+#   -h|--help         display this help
+#   -l                replace \n with LF
+#   -H                consider first line as header, if applied multiple times,
+#                     headers are read from each input file
+#   =d <delimiter>    sets regexp for delimiter, the default is \t
 #
 # Example:
 #    tsv_view -HH bench1.tsv bench2.tsv
@@ -25,7 +26,8 @@
 #.end-str
 
 BEGIN {
-	FS = "\t"
+	FS = getarg("d")
+	if (FS == "") FS = "\t"
 	arg_n = getarg("l")
 	arg_H = getarg("H")
 }
