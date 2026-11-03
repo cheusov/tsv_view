@@ -30,6 +30,7 @@ BEGIN {
 	if (FS == "") FS = "\t"
 	arg_n = getarg("l")
 	arg_H = getarg("H")
+	col_fmt = "%-2s : %s\n"
 }
 
 arg_H && NR == 1 || arg_H > 1 && FNR == 1 {
@@ -48,9 +49,11 @@ arg_H && NR == 1 || arg_H > 1 && FNR == 1 {
 			gsub(/ \\n /, "\n", $i)
 
 		if (arg_H)
-			printf col_fmt, col[i], $i
+			col_name = col[i]
 		else
-			print i, $i
+			col_name = i
+
+		printf col_fmt, col_name, $i
 	}
 	print ""
 }
