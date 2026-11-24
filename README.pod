@@ -7,9 +7,9 @@ Original file.
 
     $ cat bench.tsv 
     Implementation        Language        Type        Time
-    luajit         Lua        JIT        3.42
-    lua         Lua        Interpreter        28.91
-    gforth <        Forth        Interpreter        12.43
+    luajit        Lua        JIT        3.42
+    lua        Lua        Interpreter        28.91
+    gforth        Forth        Interpreter        12.43
     $
 
 We can view it as the following.
